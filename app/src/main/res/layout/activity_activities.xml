@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/darkBlue"
+    tools:context=".Activities">
+
+
+    <TextView
+        android:id="@+id/activitiesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activities"
+        android:textSize="30sp"
+        android:paddingVertical="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <ListView
+        android:id="@+id/category_list"
+        android:background="@color/lightBlue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:entries="@array/categories"
+        android:divider="@null"
+        tools:listitem="@layout/list_item"
+        />
+
+
+</LinearLayout>
