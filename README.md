@@ -9,7 +9,8 @@ Se busca que la aplicacion recomiende actividades para realizar con la cantidad 
 
 ## Screenshots
 <p align="center">
-<img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/menu.png?raw=true" width="30%"></img>
-<img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/activities.png?raw=true" width="30%"></img> 
-<img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/recomendation2.png?raw=true" width="30%"></img> 
+  <img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/menu.png?raw=true" width="23%"></img>
+  <img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/activities.png?raw=true" width="23%"></img> 
+  <img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/recomendation2.png?raw=true" width="23%"></img>
+  <img src="https://github.com/amafoas/not-bored-app/blob/main/screenshots/terms_and_conditions.png?raw=true" width="23%"></img>
 </p>
