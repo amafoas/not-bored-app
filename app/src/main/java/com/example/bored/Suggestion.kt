@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import android.app.ProgressDialog
 import android.view.View
 import android.widget.ProgressBar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -95,12 +94,12 @@ class Suggestion : AppCompatActivity() {
 
   private fun hideLoadingScreen() {
     val mainLayout = findViewById<ConstraintLayout>(R.id.complete_layaut)
-    // Hide all in the layout
+    // show all in the layout
     mainLayout.forEach { child ->
       child.visibility = View.VISIBLE
     }
 
-    // Show loading icon
+    // hide loading icon
     val loadIcon = findViewById<ProgressBar>(R.id.load_icon)
     loadIcon.visibility = View.GONE
   }

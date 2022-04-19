@@ -12,8 +12,6 @@ class TermsAndConditions : AppCompatActivity() {
 
     val exitBtn = findViewById<Button>(R.id.exitBtn);
     exitBtn.setOnClickListener {
-      val intent: Intent = Intent(this, MainActivity::class.java)
-      startActivity(intent)
       finish()
     }
   }
