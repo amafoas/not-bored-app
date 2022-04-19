@@ -2,9 +2,7 @@ package com.example.bored
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
 import com.example.bored.api.APIService
 import com.example.bored.api.BoredResponse
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +11,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.view.View
-import android.widget.ProgressBar
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.forEach
 
@@ -37,7 +35,6 @@ class Suggestion : AppCompatActivity() {
     }
   }
 
-
   private fun getRetrofit(): Retrofit {
     return Retrofit.Builder()
       .baseUrl("https://www.boredapi.com/api/")
@@ -46,7 +43,7 @@ class Suggestion : AppCompatActivity() {
   }
 
   private fun searchByTypeAndParticipants(type:String, participants:String){
-    showLoadingScreen()
+    showLoadingScreen(true)
     CoroutineScope(Dispatchers.IO).launch {
       val call = getRetrofit()
         .create(APIService::class.java)
@@ -54,9 +51,14 @@ class Suggestion : AppCompatActivity() {
 
       val response: BoredResponse? = call.body()
       runOnUiThread {
-        hideLoadingScreen()
+        showLoadingScreen(false)
         if(call.isSuccessful && response != null){
-          updateView(response.type, response.activity, response.participants, response.price)
+          if(response.type == null) {
+            // no activity found with the specified parameters
+            showActivityNotFound()
+          } else {
+            updateView(response.type, response.activity, response.participants, response.price)
+          }
         } else showError()
       }
     }
@@ -67,7 +69,6 @@ class Suggestion : AppCompatActivity() {
     if (participants != null) findViewById<TextView>(R.id.participantsValue).text = participants.toString()
     if (activity != null) findViewById<TextView>(R.id.activity_recomendation).text = activity
     if (price != null) {
-//      println(price)
       val priceText: String =
         when {
           price > 0.6f -> "High"
@@ -79,31 +80,37 @@ class Suggestion : AppCompatActivity() {
     }
   }
 
-  private fun showLoadingScreen() {
-    val mainLayout = findViewById<ConstraintLayout>(R.id.complete_layaut)
+  private fun showActivityNotFound() {
+    val loadingScreen = findViewById<LinearLayout>(R.id.activity_loading_screen)
+    val completeLayout = findViewById<ConstraintLayout>(R.id.complete_layaut)
+    val notFound = findViewById<LinearLayout>(R.id.activity_not_found_layout)
+    val goBackButton = findViewById<Button>(R.id.goBack_btn)
 
-    // Hide all in the layout
-    mainLayout.forEach { child ->
-      child.visibility = View.INVISIBLE
-    }
+    /// hide the other views
+    loadingScreen.visibility = View.GONE
+    completeLayout.visibility = View.GONE
 
-    // Show loading icon
-    val loadIcon = findViewById<ProgressBar>(R.id.load_icon)
-    loadIcon.visibility = View.VISIBLE
+    /// shows the not found screen
+    notFound.visibility = View.VISIBLE
+
+    /// set the button to finish the activity
+    goBackButton.setOnClickListener { finish() }
   }
 
-  private fun hideLoadingScreen() {
-    val mainLayout = findViewById<ConstraintLayout>(R.id.complete_layaut)
-    // show all in the layout
-    mainLayout.forEach { child ->
-      child.visibility = View.VISIBLE
-    }
+  private fun showLoadingScreen(show: Boolean) {
+    val completeLayout = findViewById<ConstraintLayout>(R.id.complete_layaut)
+    val loadingScreen = findViewById<LinearLayout>(R.id.activity_loading_screen)
 
-    // hide loading icon
-    val loadIcon = findViewById<ProgressBar>(R.id.load_icon)
-    loadIcon.visibility = View.GONE
+    if (show) {
+      completeLayout.visibility = View.GONE
+      loadingScreen.visibility = View.VISIBLE
+    } else {
+      completeLayout.visibility = View.VISIBLE
+      loadingScreen.visibility = View.GONE
+    }
   }
 
+  /// display an error if unable to connect to api
   private fun showError() {
     Toast.makeText(this, "Error al comunicarse con la API", Toast.LENGTH_SHORT).show()
   }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
+    android:background="@color/lightBlue"
     android:orientation="vertical"
     tools:context=".Suggestion">
 
@@ -12,16 +12,59 @@
         android:id="@+id/activity_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Not Bored"
+        android:background="@color/darkBlue"
+        android:text="@string/not_bored"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:paddingVertical="20dp" />
 
+    <LinearLayout
+        android:id="@+id/activity_not_found_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/no_activities_notification"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            />
+        <Button
+            android:id="@+id/goBack_btn"
+            android:layout_marginTop="150sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkBlue"
+            android:text="Go back"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_loading_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center">
+        <ProgressBar
+            android:id="@+id/load_icon"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBlue"
         android:paddingHorizontal="20dp"
         android:paddingVertical="30dp"
         tools:layout_editor_absoluteX="-24dp"
@@ -106,18 +149,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/load_icon"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:progressTint="#EC0D0D"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

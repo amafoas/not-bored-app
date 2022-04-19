@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">bored</string>
-    <string name="terms_and_conditions"><u>Terms and conditions</u></string>
-    <string name="title_activity_actividades">Actividades</string>
     <string name="not_bored">Not Bored</string>
+
+    <string name="terms_and_conditions"><u>Terms and conditions</u></string>
+
+    <string name="terms_and_conditions_bar">Terms and conditions</string>
     <string name="TermsAndConditions">
             Lorem ipsum dolor sit amet consectetur adipiscing elit inceptos ridiculus iaculis,
         nullam ligula elementum duis tellus maecenas nec fermentum sed dictum
@@ -39,5 +41,6 @@
         feugiat mattis ornare tortor, aliquam orci dapibus inceptos id egestas ante viverra
         donec aptent suscipit nulla. Eget nisl fringilla cras felis maecenas nisi ridiculus id
     </string>
-    <string name="terms_and_conditions_bar">Terms and conditions</string>
+    <string name="activities_titlebar">Activities</string>
+    <string name="no_activities_notification">It seems that there are no activities with these requirements</string>
 </resources>
